@@ -11,3 +11,30 @@ variable "image_id" {
 
 variable "servers" {
 }
+
+variable "environment" {
+  type        = string
+  #type = list(number)
+  default     = "staging"
+  description = "The environment of instance"
+}
+
+variable "plus" {
+  default = 2
+}
+
+variable "production" {
+  default = false
+}
+
+variable "sg" {
+  type = list(number)
+  default = [1,2,3,4]  # IDs do Security Groups da AWS
+  description = "The list od SG for this instance"
+}
+
+variable "instance_type" {
+  type = list(string)
+  default = ["t2.micro", "t3.medium"]
+  description = "The list of instance type"
+}
