@@ -16,6 +16,15 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
+  dynamic "ebs_block_device" {
+    for_each = var.ebs
+    content {
+      device_name = ebs_block_device.value["device_name"]
+      volume_size = ebs_block_device.value["volume_size"]
+      volume_type = ebs_block_device.value["volume_type"]
+    }
+  }
+
   tags = {
     Name = "HelloWorld"
   }
@@ -37,9 +46,9 @@ resource "aws_instance" "web2" {
   depends_on = [aws_instance.web]
 }
 
-resource "aws_instance" "web3" { 
+resource "aws_instance" "web3" {
   ami           = data.aws_ami.ubuntu.id
-  for_each = toset(var.instance_type)
+  for_each      = toset(var.instance_type)
   instance_type = each.value
 
   tags = {
