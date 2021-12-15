@@ -26,7 +26,7 @@ resource "aws_instance" "web" {
   }
 
   tags = {
-    Name = "HelloWorld"
+    Name = "HelloWorld - ${var.name}"
   }
 }
 # WEB2 Depende da criação do WEB1
@@ -52,7 +52,7 @@ resource "aws_instance" "web3" {
   instance_type = each.value
 
   tags = {
-    Name = "HelloWorld"
+    Name = "HelloWorld - %{ if var.name == "Homologação" }${var.name}%{ else }Produção%{ endif }"
   }
 }
 

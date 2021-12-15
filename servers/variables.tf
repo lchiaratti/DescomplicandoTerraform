@@ -47,3 +47,9 @@ variable "ebs" {
   }))
   description = "List of EBS Block"
 }
+
+variable "name" {
+  type = string
+  default = "Homologação"
+  description = "Nome do hello word"
+}

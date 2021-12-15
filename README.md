@@ -1,3 +1,3 @@
 ## Descomplicando Terraform
 
-### Arquviso utilizados no curso da LinuxTips
+### Código gerado durante o curso da LinuxTips

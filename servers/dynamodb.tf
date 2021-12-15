@@ -10,6 +10,6 @@ resource "aws_dynamodb_table" "dynamo-terraform-state-lock" {
   }
 
   tags = {
-    Name = "DynamoDB Terraform State Lock Table"
+    Name = "DynamoDB Terraform State Lock Table - %{ if var.name == "Homologação" }${var.name}%{ else }Produção%{ endif }"
   }
 }
